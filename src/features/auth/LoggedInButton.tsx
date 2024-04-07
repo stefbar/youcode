@@ -4,7 +4,7 @@ import { Session } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { useMutation } from '@tanstack/react-query'
-import { LogIn, LogOut } from 'lucide-react'
+import { LogIn, LogOut, User2 } from 'lucide-react'
 import { DropdownMenu } from '@/components/ui/dropdown-menu'
 import { DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -12,6 +12,8 @@ import { DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogFooter, AlertDialogAction, AlertDialogCancel } from '@/components/ui/alert-dialog'
 import { AlertDialogTitle, AlertDialogTrigger } from '@radix-ui/react-alert-dialog'
 import Loader from '@/components/ui/loader'
+import { DropdownMenuSeparator } from '@radix-ui/react-dropdown-menu'
+import Link from 'next/link'
 
 export type LoggedInButtonProps = {
   user: Session['user']
@@ -46,12 +48,19 @@ const LoggedInButton = (props: LoggedInButtonProps) => {
       </DropdownMenuTrigger>
         <AlertDialog>
           <DropdownMenuContent>
-              <AlertDialogTrigger asChild>
-                <DropdownMenuItem>
-                  <LogOut className='mr-2' size={12} />
-                  Logout
-                </DropdownMenuItem>
-              </AlertDialogTrigger>
+            <DropdownMenuItem asChild>
+              <Link href='/account' >
+                <User2 className='mr-2' size={12} />
+                Account
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <AlertDialogTrigger asChild>
+              <DropdownMenuItem>
+                <LogOut className='mr-2' size={12} />
+                Logout
+              </DropdownMenuItem>
+            </AlertDialogTrigger>
           </DropdownMenuContent>
           <AlertDialogContent>
             <AlertDialogHeader>
