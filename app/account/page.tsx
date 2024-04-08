@@ -2,8 +2,8 @@ import { getAuthSession } from "@/lib/auth"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import { LogOut } from "lucide-react";
 import Link from "next/link";
+import { LogoutButton } from "@/features/auth/LogoutButton";
 
 const Account = async() => {
 
@@ -15,22 +15,23 @@ const Account = async() => {
 
   return (
     <div>
-      <Card>
-        <CardHeader>
+      <Card className="m-auto mt-4 max-w-lg">
+        <CardHeader className="flex flex-row gap-4 space-y-0">
             <Avatar>
-                {user.image && <AvatarImage src={user.image} alt={user.name ?? 'user avatar'} />}
                 <AvatarFallback>{user?.name?.[0] || ''}</AvatarFallback>
+                {user.image && <AvatarImage src={user.image} alt={user.name ?? 'user avatar'} />}
             </Avatar>
-          <CardTitle>{user.email}</CardTitle>
-          <CardDescription>{user.name}</CardDescription>
+          <div className="flex flex-col gap-1">
+            <CardTitle>{user.email}</CardTitle>
+            <CardDescription>{user.name}</CardDescription>
+          </div>
         </CardHeader>
-        <CardContent>
-          <Link href="/account/settings" className={buttonVariants({ variant: 'outline' })}>Settings</Link>
-          <Link href="/account/admin" className={buttonVariants({ variant: 'outline' })}>Admin</Link>
+        <CardContent className="flex flex-col gap-2">
+          <Link href="/account/profile" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Profile</Link>
+          <Link href="/account/admin" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Admin</Link>
         </CardContent>
-        <CardFooter>
-            <LogOut className='mr-2' size={12} />
-            Logout
+        <CardFooter className="flex flex-row-reverse">
+            <LogoutButton />
         </CardFooter>
       </Card>
     </div>
