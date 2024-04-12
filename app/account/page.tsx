@@ -1,4 +1,4 @@
-import { getAuthSession } from "@/lib/auth"
+import { getAuthSession } from "@/lib/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
@@ -28,7 +28,7 @@ const Account = async() => {
         </CardHeader>
         <CardContent className="flex flex-col gap-2">
           <Link href="/account/profile" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Profile</Link>
-          <Link href="/account/admin" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Admin</Link>
+          <Link href="/admin" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Admin</Link>
         </CardContent>
         <CardFooter className="flex flex-row-reverse">
             <LogoutButton />
