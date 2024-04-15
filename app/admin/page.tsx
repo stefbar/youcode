@@ -1,12 +1,16 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from "@/components/layout/layout";
 
 const Admin = () => {
   return (
-    <>
-        <h1>Admin</h1>
-        <Link href="/admin/courses" className={buttonVariants({ variant: 'outline', size: 'lg' })}>Courses</Link>
-    </>
+    <Layout>
+      <LayoutHeader>
+        <LayoutTitle>Admin</LayoutTitle>
+      </LayoutHeader>
+      <LayoutContent>
+        <Link href="/admin/courses">Courses</Link>
+      </LayoutContent>
+    </Layout>
   )
 }
 
