@@ -1,24 +1,21 @@
-import { getAuthSession } from "@/lib/auth"
-import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { TableBody, TableCell, TableHeader, TableHead, TableRow } from '@/components/ui/table'
-import { Table } from '@/components/ui/table'
-import React from 'react'
+import { getRequiredAuthSession } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import Link from 'next/link'
+
+import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from "@/components/layout/layout"
+
+import { Card, CardContent } from '@/components/ui/card'
+import { Table, TableBody, TableCell, TableHeader, TableHead, TableRow } from '@/components/ui/table'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Typography } from "@/components/ui/typography"
-import { Layout, LayoutContent, LayoutHeader, LayoutTitle } from "@/components/layout/layout"
 
 const Courses = async () => {
 
-  const session = await getAuthSession();
-  if(!session) {
-    throw new Error('No session found');
-  }
-  const user = session.user;
+  const session = await getRequiredAuthSession();
+
   const courses = await prisma.course.findMany({
     where: {
-      creatorId: user.id,
+      creatorId: session.user.id,
     }
   });
 
