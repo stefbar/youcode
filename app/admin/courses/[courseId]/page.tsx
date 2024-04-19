@@ -10,7 +10,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Typography } from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
 
-const Course = async (id: String) => {
+const Course = async ({params}: {params: {id: string}}) => {
+
+  const {id} = params
 
   const session = await getRequiredAuthSession();
 
