@@ -61,7 +61,6 @@ const CoursePage = async ({ params, searchParams }: { params: {courseId: string}
                         <TableCell>
                           <Typography as={Link} variant={'large'} href={`/admin/users/${user.id}`} >
                             {user.email}
-                            prout
                           </Typography>
                         </TableCell>
                         <TableCell>
@@ -101,14 +100,14 @@ const CoursePage = async ({ params, searchParams }: { params: {courseId: string}
             <Typography>{course._count?.users} users</Typography>
             <Typography>{course._count?.lessons} lessons</Typography>
             <Link
-              href={`/admin/courses/${courseId}/edit`}
+              href={`/admin/courses/${course.id}/edit`}
               className={buttonVariants({
                 variant: 'outline',
               })}>
                 Edit
             </Link>
             <Link
-              href={`/admin/courses/${courseId}/lessons`}
+              href={`/admin/courses/${course.id}/lessons`}
               className={buttonVariants({
                 variant: 'outline',
               })}>

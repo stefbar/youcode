@@ -17,7 +17,7 @@ export const CoursePaginationButton = (props: CoursePaginationButtonProps) => {
             <Button
                 variant="outline"
                 size="sm"
-                disabled={props.page === 1}
+                disabled={props.page === 0}
                 onClick={() => {
                     const searchParams = new URLSearchParams({
                         page: String(props.page - 1),
@@ -25,7 +25,7 @@ export const CoursePaginationButton = (props: CoursePaginationButtonProps) => {
                     const url = `${props.baseUrl}?${searchParams.toString()}`;
                     router.push(url);	
                 }}>
-                    Previous
+                    Prev
             </Button>
 
             <Button

@@ -43,12 +43,6 @@ export const getCourse = async ({
         },
     });
 
-    const totalUsers = await prisma.courseOnUser.count({
-      where: {
-        courseId
-      }
-    })
-
     const users = course?.users.map((user) => {
       return {
         canceledAt: user.canceledAt ? true : false,
@@ -56,5 +50,5 @@ export const getCourse = async ({
       }
     });
 
-    return { ...course, users, totalUsers };
+    return { ...course, users };
 }
