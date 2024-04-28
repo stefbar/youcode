@@ -37,21 +37,19 @@ const Courses = async () => {
               <TableBody>
                 {courses.map(course => {
                   return (
-                    // <Link href="/admin/courses/:courseId" className={buttonVariants({ variant: 'outline', size: 'lg' })}>
-                        <TableRow>
-                            <TableCell>
-                              <Avatar className="rounded">
-                                  <AvatarFallback>{course.name?.[0]}</AvatarFallback>
-                                {course.image && <AvatarImage src={course.image} alt={course.name} />}
-                              </Avatar>
-                            </TableCell>
-                            <TableCell>
-                              <Typography as={Link} variant={'large'} href={`/admin/courses/${course.id}`} >
-                                {course.name}
-                              </Typography>
-                            </TableCell>
-                        </TableRow>
-                    // </Link>
+                    <TableRow>
+                        <TableCell>
+                          <Avatar className="rounded">
+                              <AvatarFallback>{course.name?.[0]}</AvatarFallback>
+                            {course.image && <AvatarImage src={course.image} alt={course.name} />}
+                          </Avatar>
+                        </TableCell>
+                        <TableCell>
+                          <Typography as={Link} variant={'large'} href={`/admin/courses/${course.id}`} >
+                            {course.name}
+                          </Typography>
+                        </TableCell>
+                    </TableRow>
                   )
                 })}
               </TableBody>
